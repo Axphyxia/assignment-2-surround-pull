@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+    <title>Surrounding Checker</title>
+    <style>
+        *{
+            margin:0;
+        }
+        body{
+            background-color:#21eb8c;
+        }
+        #map{
+            height:600px;
+            width:100%;
+        }
+        #mapBord{
+            padding:60px;
+        }
+        #scroll_to_top{
+            display:none;
+            position:fixed;
+            bottom:15px;
+            right:15px;
+            z-index:99;
+            font-size:14px;
+            border:none;
+            outline:none;
+            background-color:#00924e;
+            color:white;
+            cursor:pointer;
+            padding:15px;
+            border-radius:4px;
+        }
+        #scroll_to_top:hover{
+            background-color:#2fff9e;
+        }
+    </style>
+</head>
+<body>
+
+<!--User's current location based on google maps-->
+<div id="mapBord">
+<div id="map">
+</div>
+</div>
+<div><p>hi</p></div>
+<div><p>hi</p></div>
+<div><p>hi</p></div>
+<div><p>hi</p></div>
+
+<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlX_PX16ocYu6RE3EbTTGKFwTtW7xCSmQ&callback=initMap"></script>></script>
+<!--Scroll to top button-->
+<button onclick="topFunction()" id="scroll_to_top" title="Go to top">Up</button>
+</body>
+</html>
