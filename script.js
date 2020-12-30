@@ -1,6 +1,8 @@
+var weather;
 //Code to display google map
 function initMap(){
   //find the user's ipaddress and other relavant information based on api.ipify.org and ipapi.co
+  //Can't use on internet explorer since IE doesn't support fetch
     fetch('https://api.ipify.org/?format=json')
 	.then(results => results.json())
 	.then(data => {
@@ -11,12 +13,14 @@ function initMap(){
         //find the user's longitude and latitude based on ipapi.co's results
         let ulat = data.latitude;
         let ulng = data.longitude;
+        let ucity = data.city;
     var location = {lat: ulat, lng: ulng};
     var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 11,
         center: location
     });
-//Code to show the user's current location referenced from google maps api
+    $.getJSON('http://api.openweathermap.org/data/2.5/weather?q=' + ucity + '&appid=79677ee76990c3958964c9f0f54a6040&units=metric', openWeatherdata)
+    //Code to show the user's current location referenced from google maps api
     infoWindow = new google.maps.InfoWindow();
   const locationButton = document.createElement("button");
   locationButton.textContent = "Pan to Current Location";
@@ -73,3 +77,13 @@ function topFunction(){
     document.documentElement.scrollTop = 0;
 }
 
+//Changes the background color depending if the current temperature is under 23 degrees or over 35 degrees celcius
+function openWeatherdata(data){
+  weather = data;
+  if (weather.main.temp < 23){
+    document.body.style.backgroundColor = '#36e2f5';
+  }
+  else if (weather.main.temp > 35){
+    document.body.style.backgroundColor = '#f53636';
+  }
+}
