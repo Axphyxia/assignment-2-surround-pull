@@ -2,17 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-    <title>Surrounding Checker</title>
+    <title>SurrGrab</title>
     <style>
         *{
             margin:0;
         }
         body{
             background-color:#21eb8c;
+            border-style: solid;
+            border-color:rgb(48, 48, 48);
         }
         #map{
-            height:600px;
-            width:100%;
+            border-style:dashed;
+            border-color:rgb(87, 87, 87);
+            margin: 0 auto;
+            height:500px;
+            width:80%;
         }
         #mapBord{
             padding:60px;
@@ -35,24 +40,93 @@
         #scroll_to_top:hover{
             background-color:#2fff9e;
         }
+        p{
+            border-style: solid;
+            border-color:rgb(87, 87, 87);
+            background-color: rgb(240, 240, 240);
+            display:block;
+            letter-spacing:1px;
+            color:rgb(36, 36, 36);
+            font-size:1.44vw;
+            margin: 0 auto;
+            width:500px;
+            text-align:center;
+        }
+        .header{
+            border-style: solid;
+            border-color:rgb(48, 48, 48);
+            padding:8%;
+            display:block;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("Assets/weathNav-Banner.jpg")
+        }
+        .custom-map-control-button {
+            appearance: button;
+            background-color: #fff;
+            border: 0;
+            border-radius: 2px;
+            box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            margin: 10px;
+            padding: 0 0.5em;
+            height: 40px;
+            font: 400 18px Roboto, Arial, sans-serif;
+            overflow: hidden;
+        }
+        .custom-map-control-button:hover {
+            background: #ebebeb;
+        }
     </style>
 </head>
 <body>
 
+<div>
+    <a class="header"></a>
+</div>
+
 <!--User's current location based on google maps-->
+<h4 id='puserMessage'></h4><div style="padding:5px;"></div>
 <div id="mapBord">
 <div id="map">
 </div>
 </div>
-<div><p>hi</p></div>
-<div><p>hi</p></div>
-<div><p>hi</p></div>
-<div><p>hi</p></div>
+<div>
+    <p id='puserIp'></p><div style="padding:5px;"></div>
+    <p id="puserCity"></p><div style="padding:5px;"></div>
+    <p id="puserCountry"></p><div style="padding:5px;"></div>
+    <p id="puserPostalSector"></p><div style="padding:5px;"></div>
+    <p id="puserInEu"></p><div style="padding:5px;"></div>
+    <p id="puserLatLng"></p><div style="padding:5px;"></div>
+    <p id="puserTimeZone"></p><div style="padding:5px;"></div>
+    <p id="puserCallCode"></p><div style="padding:5px;"></div>
+    <p id="puserCurrency"></p><div style="padding:5px;"></div>
+    <p id="puserAsn"></p><div style="padding:5px;"></div>
+    <p id="puserOrg"></p><div style="padding:5px;"></div>
+</div>
 
 <script src="script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlX_PX16ocYu6RE3EbTTGKFwTtW7xCSmQ&callback=initMap"></script>></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlX_PX16ocYu6RE3EbTTGKFwTtW7xCSmQ&callback=initMap"></script></script>
 <!--Scroll to top button-->
 <button onclick="topFunction()" id="scroll_to_top" title="Go to top">Up</button>
+
+<script>
+    //When user scrolls down, show button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("scroll_to_top").style.display = "block";
+        } else {
+            document.getElementById("scroll_to_top").style.display = "none";
+        }
+    }
+    //When user clicks button scroll to top
+    function topFunction(){
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
 </body>
 </html>

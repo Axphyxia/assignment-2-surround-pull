@@ -1,4 +1,6 @@
 var weather;
+let weatherArray = [];
+
 //Code to display google map
 function initMap(){
   //find the user's ipaddress and other relavant information based on api.ipify.org and ipapi.co
@@ -7,9 +9,33 @@ function initMap(){
 	.then(results => results.json())
 	.then(data => {
         let yo = data.ip;
+        $("#puserIp").append("Ipv4 Address: " + yo);
         $(document).ready(function yyyy() {
         $.getJSON('https://ipapi.co/' + yo + '/json/', function(data){
         console.log(data);
+        let userCity = data.city;
+        $("#puserCity").append("City: " + userCity);
+        let userCountry = data.country_name;
+        $("#puserCountry").append("Country: " + userCountry);
+        let userPostalSector = data.postal;
+        $("#puserPostalSector").append("Postal sector: " + userPostalSector);
+        let userInEu = data.in_eu;
+        $("#puserInEu").append("In European Union: " + userInEu);
+        let uulat = data.latitude;
+        let uulng = data.longitude;
+        $("#puserLatLng").append("Latitude | Longitude: " + uulat + " | " + uulng);
+        let userTimeZone = data.timezone;
+        let userUtc = data.utc_offset
+        $("#puserTimeZone").append("Time Zone: " + userTimeZone + " (" + userUtc + ")");
+        let userCallCode = data.country_calling_code;
+        $("#puserCallCode").append("Call Code: " + userCallCode);
+        let userCurrency = data.currency;
+        let userCurrencyName = data.currency_name;
+        $("#puserCurrency").append("Currency: " + userCurrency + " " + userCurrencyName);
+        let userAsn = data.asn;
+        $("#puserAsn").append("ASN: " + userAsn);
+        let userOrg = data.org;
+        $("#puserOrg").append("Org: " + userOrg);
         //find the user's longitude and latitude based on ipapi.co's results
         let ulat = data.latitude;
         let ulng = data.longitude;
@@ -61,29 +87,16 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       : "Error: Your browser doesn't support geolocation."
   );
 }
-//When user scrolls down, show button
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction(){
-if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("scroll_to_top").style.display = "block";
-    } else {
-        document.getElementById("scroll_to_top").style.display = "none";
-    }
-}
-//When user clicks button scroll to top
-function topFunction(){
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
-
-//Changes the background color depending if the current temperature is under 23 degrees or over 35 degrees celcius
+//Changes the background color depending if the current temperature is under 25 degrees or over 32 degrees celcius
 function openWeatherdata(data){
   weather = data;
-  if (weather.main.temp < 23){
-    document.body.style.backgroundColor = '#36e2f5';
+  console.log(weather);
+  if (weather.main.temp < 25){
+      document.body.style.backgroundColor = '#36e2f5';
+      document.getElementById("scroll_to_top").style.backgroundColor = '#007c92';
   }
-  else if (weather.main.temp > 35){
-    document.body.style.backgroundColor = '#f53636';
+  else if (weather.main.temp > 32){
+      document.body.style.backgroundColor = '#f53636';
+      document.getElementById("scroll_to_top").style.backgroundColor = '#920000';
   }
 }
