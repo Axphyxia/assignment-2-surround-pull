@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-    <title>SurrGrab</title>
+    <title>SurrPull</title>
+    <!--Favicon icon for the website-->
+    <link rel="shortcut icon" href="assets/favicon.ico" > 
     <style>
         *{
             margin:0;
@@ -22,6 +24,7 @@
         #mapBord{
             padding:60px;
         }
+        /*Css for the go to top button*/
         #scroll_to_top{
             display:none;
             position:fixed;
@@ -37,9 +40,11 @@
             padding:15px;
             border-radius:4px;
         }
+        /*Make the colour of the button become brighter when hovering on it*/
         #scroll_to_top:hover{
             background-color:#2fff9e;
         }
+        /*css for all paragraphs*/
         p{
             border-style: solid;
             border-color:rgb(87, 87, 87);
@@ -52,6 +57,7 @@
             width:500px;
             text-align:center;
         }
+        /*css for the header of the webpage specifically the banner*/
         .header{
             border-style: solid;
             border-color:rgb(48, 48, 48);
@@ -61,11 +67,12 @@
             background-size: cover;
             background-image: url("Assets/weathNav-Banner.jpg")
         }
+        /*Css for the find current location button in the google maps api*/
         .custom-map-control-button {
             appearance: button;
             background-color: #fff;
             border: 0;
-            border-radius: 2px;
+            border-radius: 1px;
             box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             margin: 10px;
@@ -74,8 +81,27 @@
             font: 400 18px Roboto, Arial, sans-serif;
             overflow: hidden;
         }
+        /*Light up button when hovering on it*/
         .custom-map-control-button:hover {
             background: #ebebeb;
+        }
+        /*Footer css*/
+        .footer_msg{
+            color:grey;
+            display:block;
+            margin: 0 auto;
+            padding-top:100px;
+            height:70px;
+            text-align:center;
+        }
+        /*css for all the h3 elements in the website*/
+        h3{
+            color:rgb(63, 63, 63);
+            display:block;
+            margin: 0 auto;
+            padding-top:40px;
+            height:20px;
+            text-align:center;
         }
     </style>
 </head>
@@ -86,30 +112,60 @@
 </div>
 
 <!--User's current location based on google maps-->
-<h4 id='puserMessage'></h4><div style="padding:5px;"></div>
+<h3 id='puserMessage'>「　What fine weather we have today! A great day to carry out plans.　」</h3><div style="padding:5px;"></div>
 <div id="mapBord">
 <div id="map">
 </div>
 </div>
-<div>
+<div style="padding-bottom:50px;">
+    <!--Displaying all the relavant information extracted from the apis-->
     <p id='puserIp'></p><div style="padding:5px;"></div>
+
     <p id="puserCity"></p><div style="padding:5px;"></div>
+
     <p id="puserCountry"></p><div style="padding:5px;"></div>
+
+    <p id="puserCountryCode"></p><div style="padding:5px;"></div>
+
+    <p id='puserContinent'></p><div style="padding:5px;"></div>
+
     <p id="puserPostalSector"></p><div style="padding:5px;"></div>
+
     <p id="puserInEu"></p><div style="padding:5px;"></div>
+
     <p id="puserLatLng"></p><div style="padding:5px;"></div>
+
     <p id="puserTimeZone"></p><div style="padding:5px;"></div>
+
     <p id="puserCallCode"></p><div style="padding:5px;"></div>
+
     <p id="puserCurrency"></p><div style="padding:5px;"></div>
+
     <p id="puserAsn"></p><div style="padding:5px;"></div>
+
     <p id="puserOrg"></p><div style="padding:5px;"></div>
+
+    <p id="puserTemp"></p><div style="padding:5px;"></div>
+
+    <p id="puserHumid"></p><div style="padding:5px;"></div>
+
+    <p id="puserPressure"></p><div style="padding:5px;"></div>
+
+    <p id="puserWind"></p><div style="padding:5px;"></div>
+
+    <p id="puserCloud"></p><div style="padding:5px;"></div>
 </div>
 
 <script src="script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlX_PX16ocYu6RE3EbTTGKFwTtW7xCSmQ&callback=initMap"></script></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlX_PX16ocYu6RE3EbTTGKFwTtW7xCSmQ&callback=initMap"></script>
 <!--Scroll to top button-->
 <button onclick="topFunction()" id="scroll_to_top" title="Go to top">Up</button>
+
+<!--Footer-->
+<div class="footer" style="background-color:#1e1d22;">
+    <h5 class="footer_msg" style="text-align:center;">ID Assignment 2<br>Surroundings Checker Site By Daryl Chong Teck Yuan<br>2021</h5>
+</div>
 
 <script>
     //When user scrolls down, show button
