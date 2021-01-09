@@ -12,7 +12,6 @@ function initMap(){
         $("#puserIp").append("Ipv4 Address: " + yo);
         $(document).ready(function yyyy() {
         $.getJSON('https://ipapi.co/' + yo + '/json/', function(data){
-        console.log(data);
         let userCity = data.city;
         $("#puserCity").append("City: " + userCity);
         let userCountryCode = data.country_code;
@@ -95,7 +94,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 //Changes the background color depending if the current temperature is under 25 degrees or over 32 degrees celcius
 function openWeatherdata(data){
   weather = data;
-  console.log(weather);
   let userTemp = weather.main.temp;
   let userTempFeel = weather.main.feels_like;
         $("#puserTemp").append("Temperature (Feels Like): " + userTemp + "°C (" + userTempFeel + "°C)");
