@@ -49,7 +49,7 @@ function initMap(){
         zoom: 11,
         center: location
     });
-    $.getJSON('http://api.openweathermap.org/data/2.5/weather?q=' + ucity + '&appid=79677ee76990c3958964c9f0f54a6040&units=metric', openWeatherdata)
+    $.getJSON('https://api.openweathermap.org/data/2.5/weather?q=' + ucity + '&appid=79677ee76990c3958964c9f0f54a6040&units=metric', openWeatherdata)
     //Code to show the user's current location referenced from google maps api
     infoWindow = new google.maps.InfoWindow();
   const locationButton = document.createElement("button");
